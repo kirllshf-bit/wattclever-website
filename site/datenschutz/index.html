@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datenschutzerklärung – WattClever</title>
+  <meta name="description" content="Datenschutzerklärung von WattClever – Informationen zur Verarbeitung personenbezogener Daten.">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+  <link rel="shortcut icon" href="../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0F385C;
+      --sky:     #5EA4C2;
+      --sky-light: #EBF4F9;
+      --white:   #FFFFFF;
+      --surface: #F7F9FB;
+      --text:    #0D1B2A;
+      --muted:   #64748B;
+      --border:  #E2EAF0;
+      --shadow:  0 4px 24px rgba(15,56,92,.08);
+      --shadow-lg: 0 12px 48px rgba(15,56,92,.14);
+      --radius:  14px;
+      --radius-lg: 20px;
+      --transition: .25s cubic-bezier(.4,0,.2,1);
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVBAR ────────────────────────────────────── */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 12px 24px 0;
+      transition: padding var(--transition);
+    }
+    .navbar.scrolled {
+      padding: 8px 24px 0;
+      background: rgba(255,255,255,.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .navbar-inner {
+      max-width: 1140px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+
+    .navbar-logo { display: flex; align-items: center; text-decoration: none; }
+    .navbar-logo svg { width: 140px; height: auto; }
+
+    .navbar-cta { display: flex; align-items: center; gap: 12px; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 28px; border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .95rem; font-weight: 600;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--navy); color: var(--white);
+    }
+    .btn-primary:hover { background: #0a2a44; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(15,56,92,.25); }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 6px;
+    }
+    .hamburger span {
+      width: 24px; height: 2px; background: var(--navy);
+      transition: var(--transition); display: block;
+      transform-origin: center;
+    }
+
+    /* ─── CONTENT ───────────────────────────────────── */
+    .legal-section {
+      padding: 140px 0 108px;
+    }
+    .legal-container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .legal-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--sky);
+      font-size: .88rem;
+      font-weight: 600;
+      margin-bottom: 32px;
+      transition: color var(--transition);
+    }
+    .legal-back:hover { color: var(--navy); }
+    .legal-back svg { width: 16px; height: 16px; }
+
+    .legal-section h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 3.5vw, 2.9rem);
+      font-weight: 400;
+      color: var(--navy);
+      letter-spacing: -.01em;
+      margin-bottom: 20px;
+      line-height: 1.15;
+    }
+
+    .legal-intro {
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: .95rem;
+      margin-bottom: 48px;
+    }
+
+    .legal-block {
+      margin-bottom: 40px;
+    }
+    .legal-block h2 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+      letter-spacing: -.01em;
+    }
+    .legal-block p {
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: .95rem;
+    }
+    .legal-block p + p {
+      margin-top: 12px;
+    }
+    .legal-block ul {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0;
+    }
+    .legal-block ul li {
+      color: var(--muted);
+      font-size: .95rem;
+      line-height: 1.85;
+      padding-left: 20px;
+      position: relative;
+    }
+    .legal-block ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 11px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--sky);
+    }
+    .legal-block a {
+      color: var(--sky);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .legal-block a:hover { color: var(--navy); }
+
+    .legal-stand {
+      margin-top: 56px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    /* ─── FOOTER ────────────────────────────────────── */
+    footer {
+      background: #081e30; padding: 48px 0;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-inner {
+      max-width: 1140px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 20px;
+    }
+
+    .footer-brand { display: flex; flex-direction: column; gap: 10px; }
+    .footer-brand svg { width: 120px; height: auto; }
+    .footer-tagline { color: rgba(255,255,255,.35); font-size: .82rem; }
+
+    .footer-links { display: flex; gap: 24px; align-items: center; }
+    .footer-links a {
+      color: rgba(255,255,255,.4); font-size: .82rem; text-decoration: none;
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--sky); }
+
+    .footer-copy { color: rgba(255,255,255,.25); font-size: .8rem; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 768px) {
+      .legal-section { padding: 110px 0 72px; }
+      .navbar-cta .btn { display: none; }
+      .hamburger { display: flex; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="../" class="navbar-logo" aria-label="WattClever">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250" role="img" aria-label="WattClever Logo">
+        <path d="m126.8 110.5c-9.81 0-14.93 6.67-14.93 14.67s5.58 14.65 14.93 14.65c5.44 0 9.37-2.21 11.73-4.76l-3.82-4.73c-1.98 2.4-4.68 4.08-7.6 4.08-6.25 0-8.75-4.91-8.75-9.18 0-4.17 2.17-8.78 8.75-8.78 2.96 0 5.41 1.9 7.09 3.91l4.4-4.25c-2.92-3.39-6.27-5.61-11.8-5.61z" fill="#0F385C"/>
+        <path d="m142.2 110v29.62h6.49v-29.62h-6.49z" fill="#0F385C"/>
+        <path d="m164.6 118c-7.76 0-12.16 5.1-12.16 10.95 0 6.33 4.65 11.06 12.7 11.06 4.21 0 7.17-1.41 8.82-3.54l-3.67-3.75c-1.46 1.57-3.14 2.25-5.11 2.25-3.6 0-5.65-1.92-6.28-4.46h16.58c0.5-7.54-3.79-12.51-10.88-12.51zm-0.12 4.77c3 0 4.7 1.92 5.21 4.36h-10.84c0.74-2.59 2.66-4.36 5.63-4.36z" fill="#0F385C"/>
+        <path d="m194.8 118.4-6.04 14.44-5.79-14.44h-6.95l9.4 21.25h6.35l9.17-21.25h-6.14z" fill="#0F385C"/>
+        <path d="m213.6 118c-7.76 0-11.85 5.1-11.85 10.95 0 6.33 4.65 11.06 12.7 11.06 4.21 0 7.17-1.41 8.82-3.54l-3.67-3.75c-1.46 1.57-3.14 2.25-5.11 2.25-3.6 0-5.65-1.92-6.28-4.46h16.58c0.5-7.54-3.8-12.51-11.19-12.51zm-0.13 4.77c3 0 4.7 1.92 5.21 4.36h-10.52c0.74-2.59 2.34-4.36 5.31-4.36z" fill="#0F385C"/>
+        <path d="m242.7 118c-3.52 0-5.93 1.45-6.62 3.73v-3.32h-6.15v21.26h6.4v-10.09c0-4.51 2.54-5.88 6.01-5.88 0.54 0 1.01 0.04 1.43 0.13v-5.74c-0.3-0.06-0.72-0.09-1.07-0.09z" fill="#0F385C"/>
+        <path d="m44.78 112-7.4 18.79-6.01-18.79h-6.76l-7.04 18.53-5.36-18.53h-6.21l8.47 27.62h6.45l6.76-18.86 6.45 18.86h7.89l8.6-27.62h-5.84z" fill="#5EA4C2"/>
+        <path d="m61.69 117.9c-3.81 0-6.58 0.86-9.63 2.51l1.89 4.73c2.36-1.51 4.53-2.3 6.78-2.3 3.38 0 4.98 1.4 4.98 4.12v0.41c-1.64-0.44-3.42-0.7-5.35-0.7-6.25 0-9.03 3.03-9.03 6.81 0 3.65 3.48 6.34 8.22 6.34 2.63 0 4.84-0.85 6.44-2.49v2.31h5.62v-12.41c0-5.61-3.16-9.33-9.92-9.33zm-0.17 17.78c-2.5 0-4.01-1.2-4.01-3.1 0-1.8 1.42-2.79 4.5-2.79 1.41 0 2.73 0.17 3.91 0.45v1.34c0 2.4-1.81 4.1-4.4 4.1z" fill="#5EA4C2"/>
+        <path d="m99.18 120.3c2.9 0.62 7.74 0.89 9.88-2.3-1.37 4.92-5.18 6.82-10.19 6.05-4.65-0.71-6.84-3.2-13.39-3.3v10.67c0 2.44 1.21 3.43 3.3 3.43 1.01 0 1.95-0.32 2.84-0.82l1.13 4.97c-1.82 0.79-3.46 1.04-5.44 1.04-4.98 0-8.2-2.18-8.2-7.88v-10.53l-4.6 1.24 0.66-3.64 3.94-1.56v-4.22h6.49v3.91c5.37 0.06 8.53 1.9 13.58 2.94z" fill="#5EA4C2"/>
+        <path d="m95.76 113.4v6.25c2.53 0.6 6.54 0.96 6.54 0.96v-7.21h-6.54z" fill="#5EA4C2"/>
+        <path d="m107.2 133.9c-0.89 0.5-1.84 0.82-2.84 0.82-2.1 0-2.06-2.26-2.06-4.7v-4.76c-2.14 0.49-4.61 0.35-6.5-0.15v6.92c0 5.7 3.15 7.88 8.13 7.88 1.98 0 3.62-0.49 5.44-1.28l-2.17-4.73z" fill="#5EA4C2"/>
+      </svg>
+    </a>
+
+    <div class="navbar-cta">
+      <a href="https://wa.me/491708234778" target="_blank" rel="noopener" class="btn btn-primary">Jetzt anfragen</a>
+      <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<section class="legal-section">
+  <div class="legal-container">
+    <a href="../" class="legal-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Zurück zur Startseite
+    </a>
+
+    <h1>Datenschutzerklärung</h1>
+
+    <p class="legal-intro">Wir freuen uns über Ihren Besuch auf unserer Website. Der Schutz Ihrer personenbezogenen Daten ist uns ein wichtiges Anliegen. Nachfolgend informieren wir Sie gemäß den geltenden Datenschutzvorschriften, insbesondere der Datenschutz-Grundverordnung (DSGVO), über Art, Umfang und Zweck der Verarbeitung personenbezogener Daten.</p>
+
+    <div class="legal-block">
+      <h2>1. Verantwortlicher</h2>
+      <p>
+        Kirill Schäfer<br>
+        Werdenweg 1a<br>
+        26556 Utarp<br>
+        Deutschland<br>
+        E-Mail: <a href="mailto:info@wattclever.de">info@wattclever.de</a><br>
+        Telefon: <a href="tel:+491708234778">+49 170 8234778</a>
+      </p>
+    </div>
+
+    <div class="legal-block">
+      <h2>2. Hosting</h2>
+      <p>Diese Website wird bei einem externen Dienstleister (z. B. Hostinger) gehostet. Die personenbezogenen Daten werden auf den Servern des Hosters verarbeitet.</p>
+      <p>Beim Aufruf der Website werden automatisch folgende Daten erfasst:</p>
+      <ul>
+        <li>IP-Adresse</li>
+        <li>Datum und Uhrzeit</li>
+        <li>Browsertyp</li>
+        <li>Betriebssystem</li>
+        <li>Referrer URL</li>
+        <li>Hostname</li>
+      </ul>
+      <p>Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO.</p>
+    </div>
+
+    <div class="legal-block">
+      <h2>3. Google Fonts</h2>
+      <p>Auf dieser Website werden Google Fonts verwendet. Dabei kann Ihre IP-Adresse an Google übermittelt werden.</p>
+      <p>Die Nutzung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO.</p>
+    </div>
+
+    <div class="legal-block">
+      <h2>4. Kontaktaufnahme</h2>
+      <p><strong>E-Mail:</strong><br>
+      Bei Kontakt per E-Mail werden Ihre Daten zur Bearbeitung der Anfrage gespeichert.</p>
+      <p><strong>WhatsApp:</strong><br>
+      Beim Klick auf den WhatsApp-Button werden Daten an WhatsApp übermittelt. Die Nutzung erfolgt freiwillig.</p>
+    </div>
+
+    <div class="legal-block">
+      <h2>5. Externe Links / Social Media</h2>
+      <p>Diese Website enthält Links zu:</p>
+      <ul>
+        <li>Instagram</li>
+        <li>Facebook</li>
+      </ul>
+      <p>Beim Klick verlassen Sie die Website. Für die Datenverarbeitung sind die jeweiligen Anbieter verantwortlich.</p>
+    </div>
+
+    <div class="legal-block">
+      <h2>6. Cookies</h2>
+      <p>Es werden keine einwilligungspflichtigen Cookies verwendet.</p>
+    </div>
+
+    <div class="legal-block">
+      <h2>7. Ihre Rechte</h2>
+      <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung und Widerspruch gemäß DSGVO.</p>
+    </div>
+
+    <div class="legal-block">
+      <h2>8. Beschwerderecht</h2>
+      <p>Sie können sich bei einer Datenschutzbehörde beschweren.</p>
+    </div>
+
+    <p class="legal-stand">Stand: März 2026</p>
+  </div>
+</section>
+
+<!-- ══ FOOTER ════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="../" aria-label="WattClever">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250" style="width:120px;height:auto">
+          <path d="m126.8 110.5c-9.81 0-14.93 6.67-14.93 14.67s5.58 14.65 14.93 14.65c5.44 0 9.37-2.21 11.73-4.76l-3.82-4.73c-1.98 2.4-4.68 4.08-7.6 4.08-6.25 0-8.75-4.91-8.75-9.18 0-4.17 2.17-8.78 8.75-8.78 2.96 0 5.41 1.9 7.09 3.91l4.4-4.25c-2.92-3.39-6.27-5.61-11.8-5.61z" fill="rgba(255,255,255,0.5)"/>
+          <path d="m142.2 110v29.62h6.49v-29.62h-6.49z" fill="rgba(255,255,255,0.5)"/>
+          <path d="m164.6 118c-7.76 0-12.16 5.1-12.16 10.95 0 6.33 4.65 11.06 12.7 11.06 4.21 0 7.17-1.41 8.82-3.54l-3.67-3.75c-1.46 1.57-3.14 2.25-5.11 2.25-3.6 0-5.65-1.92-6.28-4.46h16.58c0.5-7.54-3.79-12.51-10.88-12.51zm-0.12 4.77c3 0 4.7 1.92 5.21 4.36h-10.84c0.74-2.59 2.66-4.36 5.63-4.36z" fill="rgba(255,255,255,0.5)"/>
+          <path d="m194.8 118.4-6.04 14.44-5.79-14.44h-6.95l9.4 21.25h6.35l9.17-21.25h-6.14z" fill="rgba(255,255,255,0.5)"/>
+          <path d="m213.6 118c-7.76 0-11.85 5.1-11.85 10.95 0 6.33 4.65 11.06 12.7 11.06 4.21 0 7.17-1.41 8.82-3.54l-3.67-3.75c-1.46 1.57-3.14 2.25-5.11 2.25-3.6 0-5.65-1.92-6.28-4.46h16.58c0.5-7.54-3.8-12.51-11.19-12.51zm-0.13 4.77c3 0 4.7 1.92 5.21 4.36h-10.52c0.74-2.59 2.34-4.36 5.31-4.36z" fill="rgba(255,255,255,0.5)"/>
+          <path d="m242.7 118c-3.52 0-5.93 1.45-6.62 3.73v-3.32h-6.15v21.26h6.4v-10.09c0-4.51 2.54-5.88 6.01-5.88 0.54 0 1.01 0.04 1.43 0.13v-5.74c-0.3-0.06-0.72-0.09-1.07-0.09z" fill="rgba(255,255,255,0.5)"/>
+          <path d="m44.78 112-7.4 18.79-6.01-18.79h-6.76l-7.04 18.53-5.36-18.53h-6.21l8.47 27.62h6.45l6.76-18.86 6.45 18.86h7.89l8.6-27.62h-5.84z" fill="#5EA4C2"/>
+          <path d="m61.69 117.9c-3.81 0-6.58 0.86-9.63 2.51l1.89 4.73c2.36-1.51 4.53-2.3 6.78-2.3 3.38 0 4.98 1.4 4.98 4.12v0.41c-1.64-0.44-3.42-0.7-5.35-0.7-6.25 0-9.03 3.03-9.03 6.81 0 3.65 3.48 6.34 8.22 6.34 2.63 0 4.84-0.85 6.44-2.49v2.31h5.62v-12.41c0-5.61-3.16-9.33-9.92-9.33zm-0.17 17.78c-2.5 0-4.01-1.2-4.01-3.1 0-1.8 1.42-2.79 4.5-2.79 1.41 0 2.73 0.17 3.91 0.45v1.34c0 2.4-1.81 4.1-4.4 4.1z" fill="#5EA4C2"/>
+          <path d="m99.18 120.3c2.9 0.62 7.74 0.89 9.88-2.3-1.37 4.92-5.18 6.82-10.19 6.05-4.65-0.71-6.84-3.2-13.39-3.3v10.67c0 2.44 1.21 3.43 3.3 3.43 1.01 0 1.95-0.32 2.84-0.82l1.13 4.97c-1.82 0.79-3.46 1.04-5.44 1.04-4.98 0-8.2-2.18-8.2-7.88v-10.53l-4.6 1.24 0.66-3.64 3.94-1.56v-4.22h6.49v3.91c5.37 0.06 8.53 1.9 13.58 2.94z" fill="#5EA4C2"/>
+          <path d="m95.76 113.4v6.25c2.53 0.6 6.54 0.96 6.54 0.96v-7.21h-6.54z" fill="#5EA4C2"/>
+          <path d="m107.2 133.9c-0.89 0.5-1.84 0.82-2.84 0.82-2.1 0-2.06-2.26-2.06-4.7v-4.76c-2.14 0.49-4.61 0.35-6.5-0.15v6.92c0 5.7 3.15 7.88 8.13 7.88 1.98 0 3.62-0.49 5.44-1.28l-2.17-4.73z" fill="#5EA4C2"/>
+        </svg>
+      </a>
+      <span class="footer-tagline">KI-Lösungen für lokale Unternehmen</span>
+    </div>
+
+    <div class="footer-links">
+      <a href="../impressum/">Impressum</a>
+      <a href="../datenschutz/">Datenschutz</a>
+    </div>
+
+    <p class="footer-copy">&copy; 2025 WattClever &middot; Kirill Schäfer &middot; Alle Rechte vorbehalten</p>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+</script>
+
+</body>
+</html>

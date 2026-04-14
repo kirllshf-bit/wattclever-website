@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WattClever – KI-Lösungen für lokale Unternehmen</title>
+  <meta name="description" content="KI-Automatisierung für Handwerker, Arztpraxen und lokale Betriebe. Praktisch, verständlich und sofort wirksam. Kirill Schäfer – WattClever.">
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+  <link rel="shortcut icon" href="./favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0F385C;
+      --sky:     #5EA4C2;
+      --sky-light: #EBF4F9;
+      --white:   #FFFFFF;
+      --surface: #F7F9FB;
+      --text:    #0D1B2A;
+      --muted:   #64748B;
+      --border:  #E2EAF0;
+      --shadow:  0 2px 8px rgba(15,56,92,.04), 0 4px 24px rgba(15,56,92,.08);
+      --shadow-lg: 0 4px 12px rgba(15,56,92,.06), 0 12px 48px rgba(15,56,92,.14);
+      --shadow-glow: 0 0 60px rgba(94,164,194,.12);
+      --radius:  14px;
+      --radius-lg: 20px;
+      --transition: .25s cubic-bezier(.4,0,.2,1);
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      /* Sehr feines Off-White statt reinem Weiß – wirkt hochwertiger */
+      background: #F9FAFB;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── UTILITIES ─────────────────────────────────── */
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 108px 0; position: relative; }
+    /* Surface-Sektionen bekommen jetzt reines Weiß – hebt sich auf Off-White-Body ab */
+    .section--surface {
+      background: #FFFFFF;
+      border-top: 1px solid rgba(15,56,92,.06);
+      border-bottom: 1px solid rgba(15,56,92,.06);
+    }
+    .section--navy { background: var(--navy); color: var(--white); }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: .8rem; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--sky);
+      margin-bottom: 20px;
+    }
+    .eyebrow::before {
+      content: ''; width: 20px; height: 2px; background: var(--sky);
+      display: inline-block;
+      transition: width .4s cubic-bezier(.16,1,.3,1);
+    }
+    .eyebrow:hover::before { width: 32px; }
+
+    h1, h2, h3 { line-height: 1.15; }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.6rem, 5vw, 3.8rem);
+      font-weight: 400;
+      color: var(--navy);
+      letter-spacing: -.01em;
+    }
+
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 3.5vw, 2.9rem);
+      font-weight: 400;
+      color: var(--navy);
+      letter-spacing: -.01em;
+    }
+
+    h3 { font-size: 1.1rem; font-weight: 700; color: var(--navy); }
+
+    p { color: var(--muted); line-height: 1.75; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 28px; border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .95rem; font-weight: 600;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--navy); color: var(--white);
+      box-shadow: 0 2px 8px rgba(15,56,92,.12);
+    }
+    .btn-primary:hover { background: #0a2a44; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(15,56,92,.15), 0 12px 28px rgba(15,56,92,.2); }
+
+    .btn-outline {
+      background: transparent; color: var(--navy);
+      border: 2px solid var(--navy);
+    }
+    .btn-outline:hover { background: var(--navy); color: var(--white); transform: translateY(-2px); }
+
+    .btn-sky {
+      background: var(--sky); color: var(--white);
+    }
+    .btn-sky:hover { background: #4a8fab; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(94,164,194,.35); }
+
+    .btn-ghost-white {
+      background: rgba(255,255,255,.12); color: var(--white);
+      border: 1.5px solid rgba(255,255,255,.3);
+      backdrop-filter: blur(4px);
+    }
+    .btn-ghost-white:hover { background: rgba(255,255,255,.22); }
+
+    /* ─── NAVBAR ────────────────────────────────────── */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 12px 24px 0;
+      transition: padding var(--transition);
+    }
+    .navbar.scrolled {
+      padding: 8px 24px 0;
+      background: rgba(255,255,255,.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(15,56,92,.06);
+      box-shadow: 0 1px 12px rgba(15,56,92,.04);
+    }
+
+    .navbar-inner {
+      max-width: 1140px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+
+    .navbar-logo { display: flex; align-items: center; text-decoration: none; }
+    .navbar-logo svg { width: 140px; height: auto; }
+
+    /* ─── 3D Pill Navigation ─── */
+    .navbar-links {
+      display: flex; align-items: center; gap: 0;
+      list-style: none;
+      position: relative;
+      padding: 6px 8px;
+      border-radius: 999px;
+      background:
+        linear-gradient(135deg,
+          #fcfcfd 0%,
+          #f8f9fb 15%,
+          #f3f5f8 30%,
+          #eef1f5 45%,
+          #e9ecf2 60%,
+          #e4e8ee 75%,
+          #dfe3ea 90%,
+          #e2e6ec 100%
+        );
+      box-shadow:
+        0 2px 4px rgba(15, 56, 92, 0.10),
+        0 6px 12px rgba(15, 56, 92, 0.14),
+        0 12px 24px rgba(15, 56, 92, 0.12),
+        0 1px 2px rgba(15, 56, 92, 0.14),
+        inset 0 2px 1px rgba(255, 255, 255, 0.80),
+        inset 0 -2px 6px rgba(15, 56, 92, 0.10),
+        inset 2px 2px 8px rgba(15, 56, 92, 0.07),
+        inset -2px 2px 8px rgba(15, 56, 92, 0.06),
+        inset 0 0 1px rgba(15, 56, 92, 0.12);
+      transition: box-shadow 0.3s ease-out, transform 0.3s ease-out;
+    }
+    .navbar-links::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 999px;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.50) 0%, rgba(255,255,255,0.25) 40%, transparent 70%);
+    }
+    .navbar-links::after {
+      content: '';
+      position: absolute;
+      inset: 1px;
+      border-radius: 999px;
+      pointer-events: none;
+      box-shadow: inset 0 0 0 0.5px rgba(15, 56, 92, 0.08);
+    }
+    .navbar-links:hover {
+      box-shadow:
+        0 3px 6px rgba(15, 56, 92, 0.12),
+        0 8px 16px rgba(15, 56, 92, 0.16),
+        0 16px 32px rgba(15, 56, 92, 0.10),
+        0 1px 2px rgba(15, 56, 92, 0.16),
+        inset 0 2px 1px rgba(255, 255, 255, 0.85),
+        inset 0 -2px 6px rgba(15, 56, 92, 0.10),
+        inset 2px 2px 8px rgba(15, 56, 92, 0.07),
+        inset -2px 2px 8px rgba(15, 56, 92, 0.06);
+      transform: translateY(-1px);
+    }
+
+    .navbar-links li {
+      position: relative;
+    }
+    .navbar-links a {
+      text-decoration: none;
+      color: var(--navy);
+      font-size: .85rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      padding: 8px 20px;
+      border-radius: 999px;
+      display: block;
+      transition: color 0.25s ease, background 0.25s ease, text-shadow 0.25s ease;
+      text-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.8),
+        0 -1px 0 rgba(15, 56, 92, 0.05);
+    }
+    .navbar-links a:hover {
+      color: var(--navy);
+      background: rgba(15, 56, 92, 0.06);
+      text-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.9),
+        0 -1px 0 rgba(15, 56, 92, 0.08);
+    }
+
+    .navbar-cta { display: flex; align-items: center; gap: 12px; }
+
+    /* ─── SOCIAL ICONS ──────────────────────────────── */
+    .social-icons { display: flex; align-items: center; gap: 4px; }
+    .social-icon {
+      width: 34px; height: 34px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); text-decoration: none;
+      transition: color var(--transition), background var(--transition);
+    }
+    .social-icon:hover { color: var(--navy); background: rgba(15,56,92,.06); }
+    .social-icon svg { width: 17px; height: 17px; fill: currentColor; }
+
+    /* Footer social */
+    .footer-social { display: flex; align-items: center; gap: 6px; }
+    .footer-social-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,.35); text-decoration: none;
+      transition: color var(--transition), background var(--transition);
+    }
+    .footer-social-icon:hover { color: var(--sky); background: rgba(255,255,255,.06); }
+    .footer-social-icon svg { width: 16px; height: 16px; fill: currentColor; }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 6px;
+    }
+    .hamburger span {
+      width: 24px; height: 2px; background: var(--navy);
+      transition: var(--transition); display: block;
+      transform-origin: center;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; top: 72px;
+      background: rgba(255,255,255,.98); backdrop-filter: blur(12px);
+      z-index: 99; padding: 40px 24px;
+      flex-direction: column; gap: 0;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      text-decoration: none; color: var(--text); font-size: 1.3rem;
+      font-weight: 600; padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+      display: block;
+    }
+    .mobile-menu a:last-child { border-bottom: none; margin-top: 24px; }
+    .mobile-menu .btn { width: 100%; justify-content: center; margin-top: 8px; }
+
+    /* ─── HERO ──────────────────────────────────────── */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding-top: 72px;
+      position: relative; overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 65% 45%, rgba(94,164,194,.08) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 60% at 5% 75%, rgba(15,56,92,.05) 0%, transparent 45%),
+        radial-gradient(ellipse 35% 35% at 80% 15%, rgba(94,164,194,.04) 0%, transparent 50%),
+        #F9FAFB;
+    }
+    .hero-bg-dots {
+      position: absolute; inset: 0; z-index: 0;
+      background-image: radial-gradient(rgba(15,56,92,.12) 1px, transparent 1px);
+      background-size: 28px 28px;
+      opacity: .5;
+      mask-image: radial-gradient(ellipse 75% 70% at 50% 50%, black 0%, transparent 75%);
+    }
+    /* Soft glow orb behind hero content */
+    .hero::after {
+      content: '';
+      position: absolute; z-index: 0;
+      width: 500px; height: 500px;
+      top: 20%; left: 55%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(94,164,194,.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(40px);
+    }
+
+    .hero-inner {
+      position: relative; z-index: 1;
+      max-width: 1140px; margin: 0 auto; padding: 0 24px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; gap: 80px;
+      width: 100%;
+    }
+
+    .hero-content { padding: 80px 0; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--sky-light); color: var(--sky);
+      border: 1px solid rgba(94,164,194,.3);
+      border-radius: 100px;
+      padding: 6px 16px; font-size: .8rem; font-weight: 600;
+      letter-spacing: .06em; text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero-badge::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--sky); display: inline-block;
+      animation: pulse 2s ease infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .5; transform: scale(.75); }
+    }
+
+    .hero h1 { margin-bottom: 24px; }
+    .hero h1 em { font-style: italic; color: var(--sky); }
+
+    .hero-sub {
+      font-size: 1.1rem; line-height: 1.7; color: var(--muted);
+      margin-bottom: 40px; max-width: 480px;
+    }
+
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .hero-photo-wrap {
+      position: relative; display: flex; justify-content: center;
+    }
+    .hero-photo-frame {
+      position: relative; width: 100%; max-width: 420px;
+      border-radius: 20px; overflow: hidden;
+      box-shadow:
+        0 4px 8px rgba(15,56,92,.06),
+        0 12px 28px rgba(15,56,92,.1),
+        0 24px 80px rgba(15,56,92,.18);
+      border: 1px solid rgba(255,255,255,.6);
+    }
+    .hero-photo-frame img {
+      width: 100%; display: block;
+      aspect-ratio: 3/4; object-fit: cover; object-position: top center;
+    }
+    .hero-photo-accent {
+      position: absolute; bottom: -20px; right: -20px; z-index: -1;
+      width: 60%; height: 60%; border-radius: 20px;
+      background: linear-gradient(135deg, var(--sky-light), transparent);
+      border: 2px solid rgba(94,164,194,.2);
+    }
+    .hero-photo-accent2 {
+      position: absolute; top: -16px; left: -16px; z-index: -1;
+      width: 40%; height: 40%; border-radius: 12px;
+      background: rgba(15,56,92,.05);
+    }
+
+    .hero-stats {
+      position: absolute; bottom: 28px; left: -24px;
+      background: rgba(255,255,255,.85);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(15,56,92,.08), 0 12px 40px rgba(15,56,92,.12);
+      border: 1px solid rgba(255,255,255,.7);
+      padding: 18px 22px; min-width: 160px;
+    }
+    .hero-stats-value { font-size: 1.6rem; font-weight: 800; color: var(--navy); line-height: 1; }
+    .hero-stats-label { font-size: .75rem; color: var(--muted); font-weight: 500; margin-top: 4px; }
+
+    /* ─── LEISTUNGEN ────────────────────────────────── */
+    .services-header { text-align: center; max-width: 560px; margin: 0 auto 64px; }
+    .services-header p { margin-top: 16px; font-size: 1.05rem; }
+
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+
+    .service-card {
+      background: #F9FAFB; border: 1px solid rgba(15,56,92,.07);
+      border-radius: var(--radius-lg); padding: 36px 32px;
+      transition: transform .3s cubic-bezier(.4,0,.2,1), box-shadow .3s cubic-bezier(.4,0,.2,1), border-color .3s ease;
+      position: relative; overflow: hidden;
+    }
+    .service-card::before {
+      content: ''; position: absolute; inset: 0;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, var(--sky-light) 0%, transparent 60%);
+      opacity: 0; transition: opacity .35s ease;
+    }
+    /* Spotlight radial glow that follows card center on hover */
+    .service-card::after {
+      content: ''; position: absolute;
+      width: 220px; height: 220px;
+      top: -60px; right: -60px;
+      background: radial-gradient(circle, rgba(94,164,194,.1) 0%, transparent 70%);
+      border-radius: 50%;
+      opacity: 0; transition: opacity .4s ease;
+      pointer-events: none;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 4px 12px rgba(15,56,92,.06), 0 16px 48px rgba(15,56,92,.12), 0 0 0 1px rgba(94,164,194,.15);
+      border-color: rgba(94,164,194,.3);
+    }
+    .service-card:hover::before { opacity: 1; }
+    .service-card:hover::after { opacity: 1; }
+
+    .service-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: var(--sky-light);
+      border: 1px solid rgba(94,164,194,.15);
+      display: flex; align-items: center;
+      justify-content: center; margin-bottom: 20px;
+      position: relative; z-index: 1;
+      transition: box-shadow .3s ease, background .3s ease;
+    }
+    .service-card:hover .service-icon {
+      box-shadow: 0 0 20px rgba(94,164,194,.15);
+      background: rgba(94,164,194,.15);
+    }
+    .service-icon svg { width: 22px; height: 22px; stroke: var(--sky); }
+    .service-card h3 { margin-bottom: 10px; position: relative; z-index: 1; }
+    .service-card p { font-size: .9rem; position: relative; z-index: 1; }
+
+    /* ─── ANWENDUNGSFÄLLE ───────────────────────────── */
+    .cases-header { text-align: center; max-width: 560px; margin: 0 auto 64px; }
+    .cases-header p { margin-top: 16px; font-size: 1.05rem; }
+
+    .cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+    .case-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 40px 32px;
+      transition: transform .3s cubic-bezier(.4,0,.2,1), box-shadow .3s ease, border-color .3s ease;
+      position: relative; overflow: hidden;
+    }
+    /* Top-edge glare shine */
+    .case-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(94,164,194,.4), transparent);
+      opacity: 0; transition: opacity .35s ease;
+    }
+    .case-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 4px 12px rgba(15,56,92,.06), 0 16px 48px rgba(15,56,92,.12);
+      border-color: rgba(94,164,194,.25);
+    }
+    .case-card:hover::before { opacity: 1; }
+
+    .case-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: 3.5rem;
+      color: transparent;
+      background: linear-gradient(135deg, var(--sky-light) 30%, rgba(94,164,194,.2));
+      -webkit-background-clip: text; background-clip: text;
+      line-height: 1; margin-bottom: 8px;
+      font-style: italic;
+    }
+    .case-industry {
+      font-size: .75rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--sky); margin-bottom: 12px;
+    }
+    .case-card h3 { font-size: 1.2rem; margin-bottom: 16px; }
+    .case-card p { font-size: .9rem; margin-bottom: 20px; }
+    .case-result {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--sky-light); color: var(--navy);
+      border-radius: 100px; padding: 8px 16px;
+      font-size: .8rem; font-weight: 600;
+    }
+    .case-result::before {
+      content: '✓'; width: 18px; height: 18px;
+      background: var(--sky); color: white;
+      border-radius: 50%; display: inline-flex;
+      align-items: center; justify-content: center;
+      font-size: .7rem; flex-shrink: 0;
+    }
+
+    /* ─── ÜBER MICH ─────────────────────────────────── */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+
+    .about-photo-wrap { position: relative; }
+    .about-photo-frame {
+      border-radius: var(--radius-lg); overflow: hidden;
+      box-shadow: 0 4px 12px rgba(15,56,92,.06), 0 12px 48px rgba(15,56,92,.14);
+      border: 1px solid rgba(255,255,255,.5);
+      position: relative; z-index: 1;
+    }
+    .about-photo-frame img {
+      width: 100%; display: block;
+      aspect-ratio: 4/5; object-fit: cover; object-position: top center;
+    }
+    .about-photo-bg {
+      position: absolute; top: 24px; left: 24px; right: -24px; bottom: -24px;
+      border-radius: var(--radius-lg);
+      background: var(--sky-light);
+      border: 1px solid rgba(94,164,194,.2);
+      z-index: 0;
+    }
+
+    .about-content {}
+    .about-content .eyebrow { margin-bottom: 16px; }
+    .about-content h2 { margin-bottom: 8px; }
+    .about-name-title { color: var(--muted); font-weight: 500; margin-bottom: 32px; font-size: 1rem; }
+
+    .about-text p { margin-bottom: 18px; }
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .about-badges {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-top: 36px;
+    }
+    .about-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 100px; padding: 8px 18px;
+      font-size: .82rem; font-weight: 600; color: var(--navy);
+      transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+    }
+    .about-badge:hover {
+      border-color: rgba(94,164,194,.35);
+      box-shadow: 0 2px 12px rgba(94,164,194,.1);
+      transform: translateY(-2px);
+    }
+    .about-badge::before {
+      content: ''; width: 8px; height: 8px; border-radius: 50%;
+      background: var(--sky);
+    }
+
+    /* ─── PROZESS ───────────────────────────────────── */
+    .process-header { text-align: center; max-width: 560px; margin: 0 auto 72px; }
+    .process-header p { margin-top: 16px; font-size: 1.05rem; }
+
+    .process-steps {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0; position: relative;
+    }
+    .process-steps::before {
+      content: ''; position: absolute; top: 36px; left: 10%; right: 10%;
+      height: 2px;
+      background: linear-gradient(to right, rgba(94,164,194,.15), var(--sky), rgba(94,164,194,.15));
+      z-index: 0;
+    }
+
+    .process-step {
+      text-align: center; padding: 0 20px; position: relative; z-index: 1;
+      transition: transform .3s ease;
+    }
+    .process-step:hover { transform: translateY(-4px); }
+
+    .step-number {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: var(--white); border: 2px solid var(--sky);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem; color: var(--navy);
+      font-style: italic;
+      box-shadow: 0 0 0 8px #F9FAFB, 0 0 0 10px rgba(94,164,194,.12), 0 4px 20px rgba(15,56,92,.08);
+      transition: box-shadow .3s ease, border-color .3s ease;
+    }
+    .process-step:hover .step-number {
+      box-shadow: 0 0 0 8px #F9FAFB, 0 0 0 10px rgba(94,164,194,.25), 0 4px 24px rgba(94,164,194,.18);
+      border-color: var(--navy);
+    }
+    .process-step h3 { font-size: 1rem; margin-bottom: 10px; }
+    .process-step p { font-size: .875rem; }
+
+    /* ─── KONTAKT ───────────────────────────────────── */
+    .contact-section {
+      background: var(--navy); padding: 108px 0;
+      position: relative; overflow: hidden;
+    }
+    /* Ambient glow orbs in contact section */
+    .contact-section::before {
+      content: '';
+      position: absolute; top: -120px; left: -80px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(94,164,194,.1) 0%, transparent 65%);
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(30px);
+    }
+    .contact-section::after {
+      content: '';
+      position: absolute; bottom: -100px; right: -60px;
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(94,164,194,.08) 0%, transparent 65%);
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(30px);
+    }
+
+    .contact-inner { text-align: center; position: relative; z-index: 1; }
+    .contact-inner .eyebrow { color: var(--sky); }
+    .contact-inner .eyebrow::before { background: var(--sky); }
+    .contact-inner h2 { color: var(--white); margin-bottom: 16px; }
+    .contact-inner > p { color: rgba(255,255,255,.65); font-size: 1.05rem; margin-bottom: 56px; }
+
+    .contact-cards {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px; max-width: 860px; margin: 0 auto;
+    }
+
+    .contact-card {
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius-lg); padding: 36px 28px;
+      text-align: center; text-decoration: none;
+      transition: transform .3s cubic-bezier(.4,0,.2,1), background .3s ease, box-shadow .3s ease, border-color .3s ease;
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      position: relative; overflow: hidden;
+    }
+    /* Top-edge highlight line */
+    .contact-card::before {
+      content: ''; position: absolute; top: 0; left: 20%; right: 20%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(94,164,194,.5), transparent);
+      opacity: 0; transition: opacity .35s ease;
+    }
+    .contact-card:hover {
+      background: rgba(255,255,255,.1); transform: translateY(-6px);
+      box-shadow: 0 8px 24px rgba(0,0,0,.15), 0 0 40px rgba(94,164,194,.08);
+      border-color: rgba(94,164,194,.25);
+    }
+    .contact-card:hover::before { opacity: 1; }
+
+    .contact-card-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: rgba(94,164,194,.15); border: 1px solid rgba(94,164,194,.25);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      transition: box-shadow .3s ease, background .3s ease;
+    }
+    .contact-card:hover .contact-card-icon {
+      box-shadow: 0 0 24px rgba(94,164,194,.2);
+      background: rgba(94,164,194,.2);
+    }
+    .contact-card-icon svg { width: 24px; height: 24px; stroke: var(--sky); }
+
+    .contact-card h3 { color: var(--white); font-size: 1rem; margin-bottom: 8px; }
+    .contact-card p { color: rgba(255,255,255,.55); font-size: .85rem; margin-bottom: 16px; }
+    .contact-card-link {
+      color: var(--sky); font-size: .9rem; font-weight: 600;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .contact-card-link svg { width: 14px; height: 14px; stroke: var(--sky); }
+
+    /* ─── FOOTER ────────────────────────────────────── */
+    footer {
+      background: #081e30; padding: 48px 0;
+      border-top: 1px solid rgba(94,164,194,.1);
+    }
+    .footer-inner {
+      max-width: 1140px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 20px;
+    }
+
+    .footer-brand { display: flex; flex-direction: column; gap: 10px; }
+    .footer-brand svg { width: 120px; height: auto; }
+    .footer-tagline { color: rgba(255,255,255,.35); font-size: .82rem; }
+
+    .footer-links { display: flex; gap: 24px; align-items: center; }
+    .footer-links a {
+      color: rgba(255,255,255,.4); font-size: .82rem; text-decoration: none;
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--sky); }
+
+    .footer-copy { color: rgba(255,255,255,.25); font-size: .8rem; }
+
+    /* ─── ANIMATIONS ─────────────────────────────────── */
+    .fade-up {
+      opacity: 0; transform: translateY(24px) scale(.98);
+      transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0) scale(1); }
+    .fade-up:nth-child(1) { transition-delay: 0s; }
+    .fade-up:nth-child(2) { transition-delay: .08s; }
+    .fade-up:nth-child(3) { transition-delay: .16s; }
+    .fade-up:nth-child(4) { transition-delay: .24s; }
+    .fade-up:nth-child(5) { transition-delay: .32s; }
+    .fade-up:nth-child(6) { transition-delay: .4s; }
+
+    /* Subtle section heading reveal */
+    .services-header, .cases-header, .process-header {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1);
+    }
+    .services-header.visible, .cases-header.visible, .process-header.visible {
+      opacity: 1; transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-steps { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+      .process-steps::before { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      .section { padding: 72px 0; }
+      .navbar-links, .navbar-cta .btn { display: none; }
+      .social-icons { display: none; }
+      .hamburger { display: flex; }
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero-photo-wrap { order: -1; }
+      .hero-photo-frame { max-width: 320px; margin: 0 auto; }
+      .hero-stats { bottom: 16px; left: -8px; }
+      .hero-content { padding: 40px 0 20px; }
+      .hero::after { width: 300px; height: 300px; top: 10%; left: 50%; }
+      .services-grid { grid-template-columns: 1fr; }
+      .cases-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-photo-bg { display: none; }
+      .process-steps { grid-template-columns: 1fr; gap: 32px; }
+      .process-step:hover { transform: none; }
+      .contact-cards { grid-template-columns: repeat(2, 1fr); }
+      .contact-section::before { width: 250px; height: 250px; }
+      .contact-section::after { width: 200px; height: 200px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.8rem; }
+      .hero-ctas { flex-direction: column; }
+      .hero-ctas .btn { width: 100%; justify-content: center; }
+      .btn { padding: 13px 22px; }
+      .contact-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══════════════════════════════════════════════════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="#" class="navbar-logo" aria-label="WattClever">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250" role="img" aria-label="WattClever Logo">
+        <path d="m126.8 110.5c-9.81 0-14.93 6.67-14.93 14.67s5.58 14.65 14.93 14.65c5.44 0 9.37-2.21 11.73-4.76l-3.82-4.73c-1.98 2.4-4.68 4.08-7.6 4.08-6.25 0-8.75-4.91-8.75-9.18 0-4.17 2.17-8.78 8.75-8.78 2.96 0 5.41 1.9 7.09 3.91l4.4-4.25c-2.92-3.39-6.27-5.61-11.8-5.61z" fill="#0F385C"/>
+        <path d="m142.2 110v29.62h6.49v-29.62h-6.49z" fill="#0F385C"/>
+        <path d="m164.6 118c-7.76 0-12.16 5.1-12.16 10.95 0 6.33 4.65 11.06 12.7 11.06 4.21 0 7.17-1.41 8.82-3.54l-3.67-3.75c-1.46 1.57-3.14 2.25-5.11 2.25-3.6 0-5.65-1.92-6.28-4.46h16.58c0.5-7.54-3.79-12.51-10.88-12.51zm-0.12 4.77c3 0 4.7 1.92 5.21 4.36h-10.84c0.74-2.59 2.66-4.36 5.63-4.36z" fill="#0F385C"/>
+        <path d="m194.8 118.4-6.04 14.44-5.79-14.44h-6.95l9.4 21.25h6.35l9.17-21.25h-6.14z" fill="#0F385C"/>
+        <path d="m213.6 118c-7.76 0-11.85 5.1-11.85 10.95 0 6.33 4.65 11.06 12.7 11.06 4.21 0 7.17-1.41 8.82-3.54l-3.67-3.75c-1.46 1.57-3.14 2.25-5.11 2.25-3.6 0-5.65-1.92-6.28-4.46h16.58c0.5-7.54-3.8-12.51-11.19-12.51zm-0.13 4.77c3 0 4.7 1.92 5.21 4.36h-10.52c0.74-2.59 2.34-4.36 5.31-4.36z" fill="#0F385C"/>
+        <path d="m242.7 118c-3.52 0-5.93 1.45-6.62 3.73v-3.32h-6.15v21.26h6.4v-10.09c0-4.51 2.54-5.88 6.01-5.88 0.54 0 1.01 0.04 1.43 0.13v-5.74c-0.3-0.06-0.72-0.09-1.07-0.09z" fill="#0F385C"/>
+        <path d="m44.78 112-7.4 18.79-6.01-18.79h-6.76l-7.04 18.53-5.36-18.53h-6.21l8.47 27.62h6.45l6.76-18.86 6.45 18.86h7.89l8.6-27.62h-5.84z" fill="#5EA4C2"/>
+        <path d="m61.69 117.9c-3.81 0-6.58 0.86-9.63 2.51l1.89 4.73c2.36-1.51 4.53-2.3 6.78-2.3 3.38 0 4.98 1.4 4.98 4.12v0.41c-1.64-0.44-3.42-0.7-5.35-0.7-6.25 0-9.03 3.03-9.03 6.81 0 3.65 3.48 6.34 8.22 6.34 2.63 0 4.84-0.85 6.44-2.49v2.31h5.62v-12.41c0-5.61-3.16-9.33-9.92-9.33zm-0.17 17.78c-2.5 0-4.01-1.2-4.01-3.1 0-1.8 1.42-2.79 4.5-2.79 1.41 0 2.73 0.17 3.91 0.45v1.34c0 2.4-1.81 4.1-4.4 4.1z" fill="#5EA4C2"/>
+        <path d="m99.18 120.3c2.9 0.62 7.74 0.89 9.88-2.3-1.37 4.92-5.18 6.82-10.19 6.05-4.65-0.71-6.84-3.2-13.39-3.3v10.67c0 2.44 1.21 3.43 3.3 3.43 1.01 0 1.95-0.32 2.84-0.82l1.13 4.97c-1.82 0.79-3.46 1.04-5.44 1.04-4.98 0-8.2-2.18-8.2-7.88v-10.53l-4.6 1.24 0.66-3.64 3.94-1.56v-4.22h6.49v3.91c5.37 0.06 8.53 1.9 13.58 2.94z" fill="#5EA4C2"/>
+        <path d="m95.76 113.4v6.25c2.53 0.6 6.54 0.96 6.54 0.96v-7.21h-6.54z" fill="#5EA4C2"/>
+        <path d="m107.2 133.9c-0.89 0.5-1.84 0.82-2.84 0.82-2.1 0-2.06-2.26-2.06-4.7v-4.76c-2.14 0.49-4.61 0.35-6.5-0.15v6.92c0 5.7 3.15 7.88 8.13 7.88 1.98 0 3.62-0.49 5.44-1.28l-2.17-4.73z" fill="#5EA4C2"/>
+      </svg>
+    </a>
+
+    <ul class="navbar-links">
+      <li><a href="#leistungen">Leistungen</a></li>
+      <li><a href="#ueber-mich">Über mich</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+
+    <div class="navbar-cta">
+      <div class="social-icons">
+        <a href="https://www.facebook.com/share/1G7Eo5oGeH/?mibextid=wwXIfr" target="_blank" rel="noopener" class="social-icon" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.971h-1.513c-1.491 0-1.956.93-1.956 1.886v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/watt.clever?igsh=MWg0YWFjaWd0bXhrbQ%3D%3D&utm_source=qr" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+      </div>
+      <a href="https://wa.me/491637991157" target="_blank" rel="noopener" class="btn btn-primary">Jetzt anfragen</a>
+      <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#leistungen" class="mobile-link">Leistungen</a>
+  <a href="#ueber-mich" class="mobile-link">Über mich</a>
+  <a href="#kontakt" class="mobile-link">Kontakt</a>
+  <a href="https://wa.me/491637991157" target="_blank" rel="noopener" class="btn btn-primary">Jetzt anfragen</a>
+</div>
+
+<!-- ══ HERO ═════════════════════════════════════════════════════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-bg-dots"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">KI-Agentur für lokale Unternehmen</div>
+      <h1>KI-Lösungen, die Ihren Alltag wirklich <em>entlasten</em></h1>
+      <p class="hero-sub">Ich automatisiere Abläufe für Handwerker, Arztpraxen und lokale Betriebe – praktisch, verständlich und sofort wirksam.</p>
+      <div class="hero-ctas">
+        <a href="https://wa.me/491637991157" target="_blank" rel="noopener" class="btn btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Kostenlose Demo anfragen
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-accent2"></div>
+      <div class="hero-photo-frame">
+        <img src="./foto.jpg" alt="Kirill Schäfer – Gründer WattClever" loading="eager">
+      </div>
+      <div class="hero-photo-accent"></div>
+      <div class="hero-stats">
+        <div class="hero-stats-value">100%</div>
+        <div class="hero-stats-label">Individuelle Lösungen</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LEISTUNGEN ═══════════════════════════════════════════════════════ -->
+<section class="section section--surface" id="leistungen">
+  <div class="container">
+    <div class="services-header">
+      <span class="eyebrow">Was ich anbiete</span>
+      <h2>Leistungen, die wirklich helfen</h2>
+      <p>Von der Automatisierung einzelner Prozesse bis zur vollständigen KI-Integration – ich bringe die Technologie in Ihren Alltag.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+        </div>
+        <h3>KI-Automatisierung</h3>
+        <p>Repetitive Aufgaben übernimmt die KI – zuverlässig, schnell und rund um die Uhr. Kein manueller Aufwand mehr für Routinearbeiten.</p>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.8a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.55 5.55l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16l.92.92z"/>
+          </svg>
+        </div>
+        <h3>Voice- & Telefon-Agenten</h3>
+        <p>KI-gestützte Telefonie beantwortet häufige Fragen, nimmt Termine entgegen und leitet bei Bedarf weiter – 24/7 verfügbar.</p>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+          </svg>
+        </div>
+        <h3>Angebotsprozesse</h3>
+        <p>Anfragen automatisch erfassen, aufbereiten und als fertiges Angebot bereitstellen – schneller, als jede manuelle Bearbeitung.</p>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+        </div>
+        <h3>Terminmanagement</h3>
+        <p>Automatische Terminvergabe und Erinnerungen – Ihre Kunden buchen selbst, Sie werden entlastet.</p>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07M8.46 8.46a5 5 0 0 0 0 7.07"/>
+          </svg>
+        </div>
+        <h3>Interne Workflows</h3>
+        <p>Interne Abläufe digital und automatisiert – von der Bestellung bis zur Rückmeldung, ohne manuelle Zwischenschritte.</p>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+          </svg>
+        </div>
+        <h3>Individuelle KI-Lösungen</h3>
+        <p>Kein Standard-Tool, sondern maßgeschneiderte KI – gebaut genau für Ihr Unternehmen und Ihre Abläufe.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ANWENDUNGSFÄLLE ══════════════════════════════════════════════════ -->
+<section class="section" id="anwendungen">
+  <div class="container">
+    <div class="cases-header">
+      <span class="eyebrow">Praxisbeispiele</span>
+      <h2>So hilft KI in echten Betrieben</h2>
+      <p>Konkrete Anwendungsfälle – keine Theorie, sondern das, was ich für Unternehmen wie Ihres umsetze.</p>
+    </div>
+
+    <div class="cases-grid">
+      <div class="case-card fade-up">
+        <div class="case-number">01</div>
+        <div class="case-industry">Handwerksbetrieb</div>
+        <h3>Anfrage rein – Angebot raus</h3>
+        <p>Der Handwerker erfasst die relevanten Infos vor Ort oder später per Spracheingabe. Die KI bereitet daraus auf Wunsch automatisch ein passendes Angebot vor – individuell auf Basis der eigenen Preisliste.</p>
+        <span class="case-result">Individuelle Angebote auf Basis Ihrer Preisliste</span>
+      </div>
+
+      <div class="case-card fade-up">
+        <div class="case-number">02</div>
+        <div class="case-industry">Arztpraxis</div>
+        <h3>24/7 erreichbar, ohne Mehraufwand</h3>
+        <p>Ein Telefon-Agent beantwortet häufige Patientenfragen, nimmt Terminwünsche entgegen und organisiert Rückrufe – auch außerhalb der Sprechzeiten.</p>
+        <span class="case-result">Entlastung für das Praxisteam</span>
+      </div>
+
+      <div class="case-card fade-up">
+        <div class="case-number">03</div>
+        <div class="case-industry">Lokales Unternehmen</div>
+        <h3>Abläufe, die sich selbst erledigen</h3>
+        <p>E-Mails beantworten, Formulare auswerten, Berichte erstellen – vollautomatisch, zuverlässig und ohne tägliches Zutun Ihres Teams.</p>
+        <span class="case-result">Mehr Zeit für das Wesentliche</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ÜBER MICH ═════════════════════════════════════════════════════════ -->
+<section class="section section--surface" id="ueber-mich">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-photo-wrap fade-up">
+        <div class="about-photo-bg"></div>
+        <div class="about-photo-frame">
+          <img src="./foto.jpg" alt="Kirill Schäfer – Gründer & KI-Spezialist bei WattClever" loading="lazy">
+        </div>
+      </div>
+
+      <div class="about-content fade-up">
+        <span class="eyebrow">Über mich</span>
+        <h2>Kirill Schäfer</h2>
+        <p class="about-name-title">Gründer & KI-Spezialist · WattClever</p>
+
+        <div class="about-text">
+          <p>Mein Ziel ist simpel: Ich helfe Unternehmen dabei, Zeit zurückzugewinnen – mit KI-Lösungen, die wirklich funktionieren.</p>
+          <p>Kein theoretisches Beratungsblabla. Kein überteuertes Berater-Paket. Stattdessen: konkrete Umsetzung, direkter Kontakt und Systeme, die vom ersten Tag an laufen.</p>
+          <p>Ich arbeite mit kleinen und mittleren Betrieben zusammen – und verstehe, was es bedeutet, im Alltag wenig Zeit zu haben und trotzdem wettbewerbsfähig bleiben zu wollen.</p>
+        </div>
+
+        <div class="about-badges">
+          <span class="about-badge">Direkter Ansprechpartner</span>
+          <span class="about-badge">Transparente Zusammenarbeit</span>
+          <span class="about-badge">Keine langen Vertragslaufzeiten</span>
+        </div>
+
+        <div style="margin-top: 36px;">
+          <a href="https://wa.me/491637991157" target="_blank" rel="noopener" class="btn btn-primary">Direkten Kontakt aufnehmen</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROZESS ═══════════════════════════════════════════════════════════ -->
+<section class="section" id="prozess">
+  <div class="container">
+    <div class="process-header">
+      <span class="eyebrow">So läuft es ab</span>
+      <h2>Vom Gespräch zum laufenden System</h2>
+      <p>Klar, strukturiert und ohne Überraschungen – so sieht unsere Zusammenarbeit aus.</p>
+    </div>
+
+    <div class="process-steps">
+      <div class="process-step fade-up">
+        <div class="step-number">1</div>
+        <h3>Erstgespräch</h3>
+        <p>Kostenlos, 30 Minuten, unverbindlich. Ich verstehe Ihr Business und Ihre konkreten Herausforderungen.</p>
+      </div>
+
+      <div class="process-step fade-up">
+        <div class="step-number">2</div>
+        <h3>Analyse</h3>
+        <p>Wir schauen gemeinsam, welche Abläufe sich automatisieren lassen und wo der größte Hebel für Ihr Unternehmen liegt.</p>
+      </div>
+
+      <div class="process-step fade-up">
+        <div class="step-number">3</div>
+        <h3>Umsetzung</h3>
+        <p>Ich baue Ihre individuelle KI-Lösung – direkt integriert in Ihre bestehende Arbeitsweise, ohne großen Aufwand Ihrerseits.</p>
+      </div>
+
+      <div class="process-step fade-up">
+        <div class="step-number">4</div>
+        <h3>Optimierung</h3>
+        <p>Nach dem Start begleite ich Sie weiter und passe das System bei Bedarf an – damit es dauerhaft gut läuft.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ KONTAKT ═══════════════════════════════════════════════════════════ -->
+<section class="contact-section" id="kontakt">
+  <div class="container">
+    <div class="contact-inner">
+      <span class="eyebrow">Kontakt</span>
+      <h2>Bereit, Zeit zu sparen?</h2>
+      <p>Nehmen Sie einfach Kontakt auf – kostenlos und unverbindlich.</p>
+
+      <div class="contact-cards">
+        <a href="tel:+491637991157" class="contact-card">
+          <div class="contact-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.8a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.55 5.55l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16l.92.92z"/>
+            </svg>
+          </div>
+          <h3>Anrufen</h3>
+          <p>Direkt sprechen – schnell und persönlich</p>
+          <span class="contact-card-link">
+            +49 163 799 1157
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+
+        <a href="https://wa.me/491637991157" target="_blank" rel="noopener" class="contact-card">
+          <div class="contact-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            </svg>
+          </div>
+          <h3>WhatsApp</h3>
+          <p>Direkt schreiben – flexibel und einfach</p>
+          <span class="contact-card-link">
+            Nachricht senden
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+
+        <a href="mailto:info@wattclever.de" class="contact-card">
+          <div class="contact-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <h3>E-Mail</h3>
+          <p>Schreiben Sie uns – wir antworten schnell</p>
+          <span class="contact-card-link">
+            info@wattclever.de
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#" aria-label="WattClever">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250" style="width:120px;height:auto">
+          <path d="m126.8 110.5c-9.81 0-14.93 6.67-14.93 14.67s5.58 14.65 14.93 14.65c5.44 0 9.37-2.21 11.73-4.76l-3.82-4.73c-1.98 2.4-4.68 4.08-7.6 4.08-6.25 0-8.75-4.91-8.75-9.18 0-4.17 2.17-8.78 8.75-8.78 2.96 0 5.41 1.9 7.09 3.91l4.4-4.25c-2.92-3.39-6.27-5.61-11.8-5.61z" fill="rgba(255,255,255,0.5)"/>
+          <path d="m142.2 110v29.62h6.49v-29.62h-6.49z" fill="rgba(255,255,255,0.5)"/>
+          <path d="m164.6 118c-7.76 0-12.16 5.1-12.16 10.95 0 6.33 4.65 11.06 12.7 11.06 4.21 0 7.17-1.41 8.82-3.54l-3.67-3.75c-1.46 1.57-3.14 2.25-5.11 2.25-3.6 0-5.65-1.92-6.28-4.46h16.58c0.5-7.54-3.79-12.51-10.88-12.51zm-0.12 4.77c3 0 4.7 1.92 5.21 4.36h-10.84c0.74-2.59 2.66-4.36 5.63-4.36z" fill="rgba(255,255,255,0.5)"/>
+          <path d="m194.8 118.4-6.04 14.44-5.79-14.44h-6.95l9.4 21.25h6.35l9.17-21.25h-6.14z" fill="rgba(255,255,255,0.5)"/>
+          <path d="m213.6 118c-7.76 0-11.85 5.1-11.85 10.95 0 6.33 4.65 11.06 12.7 11.06 4.21 0 7.17-1.41 8.82-3.54l-3.67-3.75c-1.46 1.57-3.14 2.25-5.11 2.25-3.6 0-5.65-1.92-6.28-4.46h16.58c0.5-7.54-3.8-12.51-11.19-12.51zm-0.13 4.77c3 0 4.7 1.92 5.21 4.36h-10.52c0.74-2.59 2.34-4.36 5.31-4.36z" fill="rgba(255,255,255,0.5)"/>
+          <path d="m242.7 118c-3.52 0-5.93 1.45-6.62 3.73v-3.32h-6.15v21.26h6.4v-10.09c0-4.51 2.54-5.88 6.01-5.88 0.54 0 1.01 0.04 1.43 0.13v-5.74c-0.3-0.06-0.72-0.09-1.07-0.09z" fill="rgba(255,255,255,0.5)"/>
+          <path d="m44.78 112-7.4 18.79-6.01-18.79h-6.76l-7.04 18.53-5.36-18.53h-6.21l8.47 27.62h6.45l6.76-18.86 6.45 18.86h7.89l8.6-27.62h-5.84z" fill="#5EA4C2"/>
+          <path d="m61.69 117.9c-3.81 0-6.58 0.86-9.63 2.51l1.89 4.73c2.36-1.51 4.53-2.3 6.78-2.3 3.38 0 4.98 1.4 4.98 4.12v0.41c-1.64-0.44-3.42-0.7-5.35-0.7-6.25 0-9.03 3.03-9.03 6.81 0 3.65 3.48 6.34 8.22 6.34 2.63 0 4.84-0.85 6.44-2.49v2.31h5.62v-12.41c0-5.61-3.16-9.33-9.92-9.33zm-0.17 17.78c-2.5 0-4.01-1.2-4.01-3.1 0-1.8 1.42-2.79 4.5-2.79 1.41 0 2.73 0.17 3.91 0.45v1.34c0 2.4-1.81 4.1-4.4 4.1z" fill="#5EA4C2"/>
+          <path d="m99.18 120.3c2.9 0.62 7.74 0.89 9.88-2.3-1.37 4.92-5.18 6.82-10.19 6.05-4.65-0.71-6.84-3.2-13.39-3.3v10.67c0 2.44 1.21 3.43 3.3 3.43 1.01 0 1.95-0.32 2.84-0.82l1.13 4.97c-1.82 0.79-3.46 1.04-5.44 1.04-4.98 0-8.2-2.18-8.2-7.88v-10.53l-4.6 1.24 0.66-3.64 3.94-1.56v-4.22h6.49v3.91c5.37 0.06 8.53 1.9 13.58 2.94z" fill="#5EA4C2"/>
+          <path d="m95.76 113.4v6.25c2.53 0.6 6.54 0.96 6.54 0.96v-7.21h-6.54z" fill="#5EA4C2"/>
+          <path d="m107.2 133.9c-0.89 0.5-1.84 0.82-2.84 0.82-2.1 0-2.06-2.26-2.06-4.7v-4.76c-2.14 0.49-4.61 0.35-6.5-0.15v6.92c0 5.7 3.15 7.88 8.13 7.88 1.98 0 3.62-0.49 5.44-1.28l-2.17-4.73z" fill="#5EA4C2"/>
+        </svg>
+      </a>
+      <span class="footer-tagline">KI-Lösungen für lokale Unternehmen</span>
+    </div>
+
+    <div class="footer-links">
+      <a href="./impressum/">Impressum</a>
+      <a href="./datenschutz/">Datenschutz</a>
+    </div>
+
+    <div class="footer-social">
+      <a href="https://www.facebook.com/share/1G7Eo5oGeH/?mibextid=wwXIfr" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.971h-1.513c-1.491 0-1.956.93-1.956 1.886v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/watt.clever?igsh=MWg0YWFjaWd0bXhrbQ%3D%3D&utm_source=qr" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+    </div>
+
+    <p class="footer-copy">© 2025 WattClever · Kirill Schäfer · Alle Rechte vorbehalten</p>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-up, .services-header, .cases-header, .process-header').forEach(el => observer.observe(el));
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = 80;
+        window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+</body>
+</html>

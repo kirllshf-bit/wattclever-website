@@ -4,13 +4,6 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./index.html:/usr/share/nginx/html/index.html:ro
-      - ./datenschutz:/usr/share/nginx/html/datenschutz:ro
-      - ./impressum:/usr/share/nginx/html/impressum:ro
-      - ./foto.jpg:/usr/share/nginx/html/foto.jpg:ro
-      - ./favicon.ico:/usr/share/nginx/html/favicon.ico:ro
-      - ./favicon.svg:/usr/share/nginx/html/favicon.svg:ro
-      - ./favicon-16x16.png:/usr/share/nginx/html/favicon-16x16.png:ro
-      - ./apple-touch-icon.png:/usr/share/nginx/html/apple-touch-icon.png:ro
+      - ./site:/usr/share/nginx/html:ro
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
     restart: unless-stopped
