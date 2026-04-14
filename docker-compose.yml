@@ -5,15 +5,16 @@ services:
       - ./site:/usr/share/nginx/html:ro
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
     restart: unless-stopped
+    networks:
+      - n8n_default
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.wattclever.rule=Host(`wattclever.de`) || Host(`www.wattclever.de`)"
-      - "traefik.http.routers.wattclever.entrypoints=web"
+      - "traefik.http.routers.wattclever.entrypoints=web,websecure"
+      - "traefik.http.routers.wattclever.tls=true"
+      - "traefik.http.routers.wattclever.tls.certresolver=mytlschallenge"
       - "traefik.http.services.wattclever.loadbalancer.server.port=80"
-      - "traefik.http.routers.wattclever-secure.rule=Host(`wattclever.de`) || Host(`www.wattclever.de`)"
-      - "traefik.http.routers.wattclever-secure.entrypoints=websecure"
-      - "traefik.http.routers.wattclever-secure.tls=true"
-      - "traefik.http.routers.wattclever-secure.tls.certresolver=letsencrypt"
-      - "traefik.http.middlewares.redirect-www.redirectregex.regex=^https://www\\.wattclever\\.de/(.*)"
-      - "traefik.http.middlewares.redirect-www.redirectregex.replacement=https://wattclever.de/$${1}"
-      - "traefik.http.routers.wattclever-secure.middlewares=redirect-www"
+
+networks:
+  n8n_default:
+    external: true
