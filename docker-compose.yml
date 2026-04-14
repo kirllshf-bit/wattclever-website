@@ -7,7 +7,7 @@ services:
       - ./index.html:/usr/share/nginx/html/index.html:ro
       - ./datenschutz:/usr/share/nginx/html/datenschutz:ro
       - ./impressum:/usr/share/nginx/html/impressum:ro
-      - ./das neuste bild.jpg:/usr/share/nginx/html/das neuste bild.jpg:ro
+      - ./foto.jpg:/usr/share/nginx/html/foto.jpg:ro
       - ./favicon.ico:/usr/share/nginx/html/favicon.ico:ro
       - ./favicon.svg:/usr/share/nginx/html/favicon.svg:ro
       - ./favicon-16x16.png:/usr/share/nginx/html/favicon-16x16.png:ro
